@@ -14,7 +14,7 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
   def mount(_params, _session, socket) do
     socket =
       assign(socket,
-        number: 1
+        number: 2
       )
 
     {:ok, socket}
