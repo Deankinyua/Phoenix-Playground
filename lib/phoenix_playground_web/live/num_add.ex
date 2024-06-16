@@ -33,4 +33,9 @@ end
 defmodule PhoenixPlaygroundWeb.StringList do
   def upcase([]), do: []
   def upcase([first | rest]), do: [String.upcase(first) | upcase(rest)]
+
+  def anonymous(a, b) do
+    sum = a + b
+    IO.puts(sum)
+  end
 end
