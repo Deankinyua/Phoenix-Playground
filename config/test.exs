@@ -6,7 +6,7 @@ import Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :phoenix_playground, PhoenixPlayground.Repo,
-  username: "postgres",
+  username: "dean",
   password: "kamanu254",
   hostname: "localhost",
   database: "phoenix_playground_test#{System.get_env("MIX_TEST_PARTITION")}",
