@@ -1,4 +1,5 @@
 defmodule PhoenixPlaygroundWeb.NumAddLive do
+  use Timex
   use PhoenixPlaygroundWeb, :live_view
 
   def render(assigns) do
@@ -16,7 +17,7 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
     socket =
       assign(socket,
         number: 2,
-        date: DateTime.utc_now()
+        date: Timex.local
       )
 
     {:ok, socket}
@@ -25,6 +26,8 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
   def handle_event("perform_addition", %{"number" => number}, socket) do
     # add = fn num -> num + 1 end
     number = String.to_integer(number)
+    IO.puts(number)
+    dbg(Timex.local())
     add = &(&1 + 1)
     IO.puts(add.(number))
 
