@@ -5,6 +5,7 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
     ~H"""
     <h2>Perfoming an Addition, Showing it and IO.puts to the console</h2>
     <p><%= @number %></p>
+    <p><%= @date %></p>
     <div>
       <button phx-click="perform_addition" phx-value-number={@number}>Add</button>
     </div>
@@ -14,7 +15,8 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
   def mount(_params, _session, socket) do
     socket =
       assign(socket,
-        number: 2
+        number: 2,
+        date: DateTime.utc_now()
       )
 
     {:ok, socket}
@@ -38,4 +40,21 @@ defmodule PhoenixPlaygroundWeb.StringList do
     sum = a + b
     IO.puts(sum)
   end
+
+
+
+  # We can share values with functions using closures. A closure has access to variable
+# values both inside and outside of the code block. In Elixir we can create an anonymous
+# function and pass it a code block with the values of the variables that were defined
+# outside of it.
+# e.g
+
+# message = "Hello, World!"
+#  say_hello = fn -> Process.sleep(1000); IO.puts(message) end
+# spawn(say_hello)
+# "Hello, World!"
+
+
+
+
 end
