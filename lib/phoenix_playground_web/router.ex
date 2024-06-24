@@ -19,6 +19,7 @@ defmodule PhoenixPlaygroundWeb.Router do
 
     get "/", PageController, :home
     live "/add", NumAddLive
+    live "/clock", ClockLive
   end
 
   # Other scopes may use custom stacks.

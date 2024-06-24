@@ -1,5 +1,6 @@
 defmodule PhoenixPlaygroundWeb.NumAddLive do
   use Timex
+  import DateTime
   use PhoenixPlaygroundWeb, :live_view
 
   def render(assigns) do
@@ -14,25 +15,37 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
   end
 
   def mount(_params, _session, socket) do
-    socket =
-      assign(socket,
-        number: 2,
-        date: Timex.local
-      )
 
-    {:ok, socket}
+      {:ok,
+      socket
+      |> assign(:number, 0)
+      |> assign(:date, to_time(Timex.local))
+    }
+
   end
 
   def handle_event("perform_addition", %{"number" => number}, socket) do
     # add = fn num -> num + 1 end
     number = String.to_integer(number)
-    IO.puts(number)
-    dbg(Timex.local())
     add = &(&1 + 1)
     IO.puts(add.(number))
 
-    {:noreply, assign(socket, number: add.(number))}
+    {:noreply,
+    socket
+    |> assign(number: add.(number))
+    |> assign( date: to_time(date_adder(Timex.local())))
+    }
   end
+
+  # def handle_params(_params, _url, socket) do
+  #   {:noreply, assign(socket, date: to_time(date_adder(Timex.local())))}
+  # end
+  def date_adder(date_struct) do
+    date_struct = add(date_struct, 1, :second)
+    # IO.puts(date_struct)
+    date_adder(date_struct)
+  end
+
 end
 
 defmodule PhoenixPlaygroundWeb.StringList do
@@ -42,9 +55,10 @@ defmodule PhoenixPlaygroundWeb.StringList do
   def anonymous(a, b) do
     sum = a + b
     IO.puts(sum)
+    local_anonymous = fn -> d = 10; multiply = d + 20; multiply  end
+    IO.puts(local_anonymous.())
+
   end
-
-
 
   # We can share values with functions using closures. A closure has access to variable
 # values both inside and outside of the code block. In Elixir we can create an anonymous
@@ -56,8 +70,6 @@ defmodule PhoenixPlaygroundWeb.StringList do
 #  say_hello = fn -> Process.sleep(1000); IO.puts(message) end
 # spawn(say_hello)
 # "Hello, World!"
-
-
 
 
 end
