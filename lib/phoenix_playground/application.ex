@@ -10,7 +10,8 @@ defmodule PhoenixPlayground.Application do
     children = [
       PhoenixPlaygroundWeb.Telemetry,
       PhoenixPlayground.Repo,
-      {DNSCluster, query: Application.get_env(:phoenix_playground, :dns_cluster_query) || :ignore},
+      {DNSCluster,
+       query: Application.get_env(:phoenix_playground, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: PhoenixPlayground.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: PhoenixPlayground.Finch},

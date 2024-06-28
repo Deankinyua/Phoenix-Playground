@@ -15,13 +15,10 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
   end
 
   def mount(_params, _session, socket) do
-
-      {:ok,
-      socket
-      |> assign(:number, 0)
-      |> assign(:date, to_time(Timex.local))
-    }
-
+    {:ok,
+     socket
+     |> assign(:number, 0)
+     |> assign(:date, to_time(Timex.local()))}
   end
 
   def handle_event("perform_addition", %{"number" => number}, socket) do
@@ -31,10 +28,9 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
     IO.puts(add.(number))
 
     {:noreply,
-    socket
-    |> assign(number: add.(number))
-    |> assign( date: to_time(date_adder(Timex.local())))
-    }
+     socket
+     |> assign(number: add.(number))
+     |> assign(date: to_time(date_adder(Timex.local())))}
   end
 
   # def handle_params(_params, _url, socket) do
@@ -45,7 +41,6 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
     # IO.puts(date_struct)
     date_adder(date_struct)
   end
-
 end
 
 defmodule PhoenixPlaygroundWeb.StringList do
@@ -55,21 +50,24 @@ defmodule PhoenixPlaygroundWeb.StringList do
   def anonymous(a, b) do
     sum = a + b
     IO.puts(sum)
-    local_anonymous = fn -> d = 10; multiply = d + 20; multiply  end
-    IO.puts(local_anonymous.())
 
+    local_anonymous = fn ->
+      d = 10
+      multiply = d + 20
+      multiply
+    end
+
+    IO.puts(local_anonymous.())
   end
 
   # We can share values with functions using closures. A closure has access to variable
-# values both inside and outside of the code block. In Elixir we can create an anonymous
-# function and pass it a code block with the values of the variables that were defined
-# outside of it.
-# e.g
+  # values both inside and outside of the code block. In Elixir we can create an anonymous
+  # function and pass it a code block with the values of the variables that were defined
+  # outside of it.
+  # e.g
 
-# message = "Hello, World!"
-#  say_hello = fn -> Process.sleep(1000); IO.puts(message) end
-# spawn(say_hello)
-# "Hello, World!"
-
-
+  # message = "Hello, World!"
+  #  say_hello = fn -> Process.sleep(1000); IO.puts(message) end
+  # spawn(say_hello)
+  # "Hello, World!"
 end
