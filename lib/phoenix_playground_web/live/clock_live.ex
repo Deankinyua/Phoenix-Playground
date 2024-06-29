@@ -1,7 +1,9 @@
 defmodule PhoenixPlaygroundWeb.ClockLive do
   @moduledoc false
   use Timex
+  # use Process
   import DateTime
+  alias PhoenixPlaygroundWeb.NumAddLive
   use PhoenixPlaygroundWeb, :live_view
 
   def mount(_params, _session, socket) do
@@ -34,5 +36,22 @@ defmodule PhoenixPlaygroundWeb.ClockLive do
 
   defp schedule_tick(socket) do
     Process.send_after(self(), :tick, 1_000)
+  end
+
+  # * This function was when I was revising on the use of specifications
+
+  # * @spec directive placed right before the function definition and taking as a params the name of the
+  # * function, a list of parameter types, and after :: the type of the return value.
+  @spec sum_product(integer) :: integer
+  def sum_product(a) do
+    [1, 2, 3]
+    |> Enum.map(fn el -> el * a end)
+    |> Enum.sum()
+  end
+
+  def send_message do
+    pid = NumAddLive.get_pid()
+
+    Process.send_after(pid, :hi_there_num_add_live_module, 2000)
   end
 end

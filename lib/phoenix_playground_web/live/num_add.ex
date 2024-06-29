@@ -20,6 +20,7 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
      socket
      |> assign(:number, 0)
      |> assign(:date, to_time(Timex.local()))}
+     #  |> assign(:date, get_pid())}
   end
 
   def handle_event("perform_addition", %{"number" => number}, socket) do
@@ -34,10 +35,10 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
   end
 
   def get_pid do
-    # self()
+    self()
     # spawn(fn -> IO.puts "Hello, World!" end)
-    date_struct = Timex.local()
-    spawn(NumAddLive, :date_adder, [date_struct])
+    # date_struct = Timex.local()
+    # spawn(NumAddLive, :date_adder, [date_struct])
   end
 
   # def handle_params(_params, _url, socket) do
@@ -47,6 +48,16 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
     date_struct = add(date_struct, 1, :second)
     # IO.puts(date_struct)
     # date_adder(date_struct)
+  end
+
+  def message_receiver do
+
+    receive do
+      :hi_there_num_add_live_module ->
+         IO.puts "Hello I received the message from clock live module"
+  after
+    0 ->
+      IO.puts "Message not found" end
   end
 end
 
