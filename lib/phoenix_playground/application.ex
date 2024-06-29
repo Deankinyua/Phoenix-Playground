@@ -18,7 +18,8 @@ defmodule PhoenixPlayground.Application do
       # Start a worker by calling: PhoenixPlayground.Worker.start_link(arg)
       # {PhoenixPlayground.Worker, arg},
       # Start to serve requests, typically the last entry
-      PhoenixPlaygroundWeb.Endpoint
+      PhoenixPlaygroundWeb.Endpoint,
+      PhoenixPlayground.Periodically
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

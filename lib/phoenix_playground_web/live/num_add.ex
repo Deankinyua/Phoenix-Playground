@@ -1,5 +1,6 @@
 defmodule PhoenixPlaygroundWeb.NumAddLive do
   use Timex
+  alias PhoenixPlaygroundWeb.NumAddLive
   import DateTime
   use PhoenixPlaygroundWeb, :live_view
 
@@ -29,8 +30,14 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
 
     {:noreply,
      socket
-     |> assign(number: add.(number))
-     |> assign(date: to_time(date_adder(Timex.local())))}
+     |> assign(number: add.(number))}
+  end
+
+  def get_pid do
+    # self()
+    # spawn(fn -> IO.puts "Hello, World!" end)
+    date_struct = Timex.local()
+    spawn(NumAddLive, :date_adder, [date_struct])
   end
 
   # def handle_params(_params, _url, socket) do
@@ -39,7 +46,7 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
   def date_adder(date_struct) do
     date_struct = add(date_struct, 1, :second)
     # IO.puts(date_struct)
-    date_adder(date_struct)
+    # date_adder(date_struct)
   end
 end
 

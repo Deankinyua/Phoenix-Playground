@@ -1,4 +1,6 @@
 defmodule PhoenixPlayground.Periodically do
+  alias PhoenixPlaygroundWeb.NumAddLive
+  use Timex
   use GenServer
 
   def start_link(_) do
@@ -17,6 +19,7 @@ defmodule PhoenixPlayground.Periodically do
   def handle_info(:work, state) do
     # Do the desired work here
     # ...
+    NumAddLive.date_adder(Timex.local())
 
     # Reschedule once more
     schedule_work()
@@ -25,8 +28,8 @@ defmodule PhoenixPlayground.Periodically do
   end
 
   defp schedule_work do
-    # We schedule the work to happen in 2 hours (written in milliseconds).
+    # We schedule the work to happen in 10 seconds (written in milliseconds).
     # Alternatively, one might write :timer.hours(2)
-    Process.send_after(self(), :work, 2 * 60 * 60 * 1000)
+    Process.send_after(self(), :work, 10 * 1000)
   end
 end
