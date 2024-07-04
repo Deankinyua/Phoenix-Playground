@@ -21,7 +21,6 @@ defmodule PhoenixPlayground.Periodically do
     # ...
     NumAddLive.date_adder(Timex.local())
 
-
     # Reschedule once more
     schedule_work()
 

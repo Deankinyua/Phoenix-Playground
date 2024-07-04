@@ -7,6 +7,7 @@ defmodule PhoenixPlayground.GenServer1 do
     new_state = [el | current_state]
     {:reply, new_state, new_state}
   end
+
   # @behaviour GenServer
   # @impl true
   # def init(init_arg), do: {:ok, init_arg}
@@ -24,9 +25,9 @@ defmodule PhoenixPlayground.GenServer1 do
   # end
 end
 
-#* Use "GenServer.call(GenServer1, :test)" to initiate a synchronous call to a GenServer process.
+# * Use "GenServer.call(GenServer1, :test)" to initiate a synchronous call to a GenServer process.
 
-#* Use "GenServer.start(GenServer1, [], name: GenServer1)" to start the genserver
+# * Use "GenServer.start(GenServer1, [], name: GenServer1)" to start the genserver
 # GenServer.start(GenServer1, [], timeout: 1000)
 # GenServer.stop(GenServer1)
 # Process.whereis(GenServer1)

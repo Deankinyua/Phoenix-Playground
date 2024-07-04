@@ -49,6 +49,21 @@ defmodule PhoenixPlaygroundWeb.ClockLive do
     |> Enum.sum()
   end
 
+  def get_pid do
+    self()
+  end
+
+  def message_receiver do
+    receive do
+      message ->
+        IO.puts(message)
+        IO.puts("Hello I received the message from clock live module")
+    after
+      0 ->
+        IO.puts("Message not found")
+    end
+  end
+
   def send_message do
     pid = NumAddLive.get_pid()
     date = Timex.local()
