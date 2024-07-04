@@ -21,6 +21,7 @@ defmodule PhoenixPlayground.Periodically do
     # ...
     NumAddLive.date_adder(Timex.local())
 
+
     # Reschedule once more
     schedule_work()
 
@@ -30,6 +31,6 @@ defmodule PhoenixPlayground.Periodically do
   defp schedule_work do
     # We schedule the work to happen in 10 seconds (written in milliseconds).
     # Alternatively, one might write :timer.hours(2)
-    Process.send_after(self(), :work, 10 * 1000)
+    Process.send_after(self(), :work, 1000)
   end
 end
