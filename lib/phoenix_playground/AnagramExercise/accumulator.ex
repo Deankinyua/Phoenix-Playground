@@ -1,12 +1,13 @@
 defmodule PhoenixPlayground.Accumulator do
-  # * This is an exercise on processes and how to use them
+  # * This is an exercise on processes and how to use them building an anagram identifier
 
   def loop(anagrams \\ %{}) do
     receive do
       {from, {:add, {letters, word}}} ->
         anagrams = add_word(anagrams, letters, word)
         send(from, :ok)
-        loop(anagrams) # must put loop/0 inside each match
+        # must put loop/0 inside each match
+        loop(anagrams)
 
       {from, :list} ->
         send(from, {:ok, list_anagrams(anagrams)})
@@ -18,7 +19,7 @@ defmodule PhoenixPlayground.Accumulator do
     words = Map.get(anagrams, letters, [])
 
     anagrams
-    |> Map.put(letters, [word|words])
+    |> Map.put(letters, [word | words])
   end
 
   defp list_anagrams(anagrams) do

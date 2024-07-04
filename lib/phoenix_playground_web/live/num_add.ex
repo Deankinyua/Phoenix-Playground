@@ -20,7 +20,8 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
      socket
      |> assign(:number, 0)
      |> assign(:date, to_time(Timex.local()))}
-     #  |> assign(:date, get_pid())}
+
+    #  |> assign(:date, get_pid())}
   end
 
   def handle_event("perform_addition", %{"number" => number}, socket) do
@@ -51,13 +52,13 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
   end
 
   def message_receiver do
-
     receive do
       :hi_there_num_add_live_module ->
-         IO.puts "Hello I received the message from clock live module"
-  after
-    0 ->
-      IO.puts "Message not found" end
+        IO.puts("Hello I received the message from clock live module")
+    after
+      0 ->
+        IO.puts("Message not found")
+    end
   end
 end
 
