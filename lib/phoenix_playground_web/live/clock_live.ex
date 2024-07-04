@@ -51,7 +51,8 @@ defmodule PhoenixPlaygroundWeb.ClockLive do
 
   def send_message do
     pid = NumAddLive.get_pid()
+    date = Timex.local()
 
-    Process.send_after(pid, :hi_there_num_add_live_module, 2000)
+    Process.send_after(pid, date, 2000)
   end
 end

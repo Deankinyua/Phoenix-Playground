@@ -1,8 +1,18 @@
 defmodule PhoenixPlaygroundWeb.NumAddLive do
+      @moduledoc """
+  this module is used for performing an addition, logging it to the console
+
+  ## Examples
+
+  IO.puts(add.(number))
+
+
+  """
   use Timex
   alias PhoenixPlaygroundWeb.NumAddLive
   import DateTime
   use PhoenixPlaygroundWeb, :live_view
+
 
   def render(assigns) do
     ~H"""
@@ -53,7 +63,7 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
 
   def message_receiver do
     receive do
-      :hi_there_num_add_live_module ->
+      date -> IO.puts(date)
         IO.puts("Hello I received the message from clock live module")
     after
       0 ->

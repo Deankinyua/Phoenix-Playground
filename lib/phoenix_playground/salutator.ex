@@ -1,4 +1,5 @@
 defmodule PhoenixPlayground.Salutator do
+
   def run do
     receive do
       {:hi, name} ->
