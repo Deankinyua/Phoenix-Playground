@@ -1,4 +1,9 @@
 defmodule PhoenixPlayground.Receiver do
+  @moduledoc  """
+
+  receives the message from PhoenixPlaygroundSender Module
+  """
+
   def get_pid do
     self()
   end
