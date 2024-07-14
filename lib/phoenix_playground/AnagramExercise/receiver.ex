@@ -1,5 +1,5 @@
 defmodule PhoenixPlayground.Receiver do
-  @moduledoc  """
+  @moduledoc """
 
   receives the message from PhoenixPlaygroundSender Module
   """
