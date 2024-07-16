@@ -2,6 +2,9 @@ defmodule PhoenixPlayground.Multiclause do
   def fact(0), do: 1
   def fact(n), do: n * fact(n - 1)
 
+  def is_list_empty?([]), do: true
+  def is_list_empty?([_ | _]), do: false
+
   # * This is an Overloaded multiclause function which uses
   # * pattern matching to find the area of different shapes
   # *  A clause is a function definition specified by the def expression.
@@ -26,9 +29,6 @@ defmodule PhoenixPlayground.Multiclause do
 
   # * Branching with MultiClause Functions
   # * Branch based on the shape of the input data
-
-  def is_list_empty?([]), do: true
-  def is_list_empty?([_ | _]), do: false
 
   # * behaves differently when called with a binary or a number and uses Guard Expressions
 
