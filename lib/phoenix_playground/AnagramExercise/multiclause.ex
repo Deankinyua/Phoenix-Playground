@@ -1,4 +1,5 @@
 defmodule PhoenixPlayground.Multiclause do
+  # note: Multiclause Functions
   def fact(0), do: 1
   def fact(n), do: n * fact(n - 1)
 
