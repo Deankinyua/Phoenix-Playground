@@ -32,6 +32,7 @@ defmodule PhoenixPlayground.Multiclause do
   # * Branch based on the shape of the input data
 
   # * behaves differently when called with a binary or a number and uses Guard Expressions
+  # * Did you know a bitstring is a binary if the number of bits is strictly divisible by 8?
 
   def double(x) when is_number(x), do: x * 2
   def double(x) when is_binary(x), do: x <> x
