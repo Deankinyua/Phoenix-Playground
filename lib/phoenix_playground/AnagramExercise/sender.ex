@@ -1,8 +1,8 @@
 defmodule PhoenixPlayground.Sender do
-  alias PhoenixPlayground.Receiver1
+  alias PhoenixPlayground.Receiver
 
   def send_message do
-    pid = Receiver1.get_pid()
+    pid = Receiver.get_pid()
     send(pid, {self(), 10})
   end
 
