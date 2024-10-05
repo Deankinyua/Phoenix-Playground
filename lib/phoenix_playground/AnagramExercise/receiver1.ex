@@ -1,4 +1,4 @@
-defmodule PhoenixPlayground.Receiver do
+defmodule PhoenixPlayground.Receiver1 do
   @moduledoc """
 
   receives the message from PhoenixPlaygroundSender Module
@@ -14,7 +14,7 @@ defmodule PhoenixPlayground.Receiver do
         # IO.puts(is_bitstring(message))
         response = "The message from sender module has been received"
         send(caller_pid, {:response, response})
-        message * 100
+        message
     end
   end
 end

@@ -1,9 +1,9 @@
 defmodule PhoenixPlayground.Sender do
-  alias PhoenixPlayground.Receiver
+  alias PhoenixPlayground.Receiver1
 
   def send_message do
-    pid = Receiver.get_pid()
-    send(pid, {self(), "some_message"})
+    pid = Receiver1.get_pid()
+    send(pid, {self(), 10})
   end
 
   # * The function determines if the bread has expired or not
