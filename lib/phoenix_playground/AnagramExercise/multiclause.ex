@@ -3,6 +3,18 @@ defmodule PhoenixPlayground.Multiclause do
   def fact(0), do: 1
   def fact(n), do: n * fact(n - 1)
 
+  def print(1), do: IO.puts(1)
+  def print(0), do: IO.puts("cannot compute for zero")
+
+  def print(n) when is_number(n) and n > 0 do
+    print(n - 1)
+    IO.puts(n)
+  end
+
+  def print(n) when is_number(n) and n < 0 do
+    IO.puts("we can only calculate positive numbers")
+  end
+
   def is_list_empty?([]), do: true
   def is_list_empty?([_ | _]), do: false
 
