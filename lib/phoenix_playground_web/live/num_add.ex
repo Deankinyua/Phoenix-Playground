@@ -57,7 +57,7 @@ defmodule PhoenixPlaygroundWeb.NumAddLive do
   # end
   def date_adder(date_struct) do
     date_struct = add(date_struct, 1, :second)
-    # IO.puts(to_time(date_struct))
+    IO.puts(to_time(date_struct))
     # date_adder(date_struct)
   end
 
