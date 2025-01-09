@@ -1,4 +1,9 @@
-# PhoenixPlayground
+# PhoenixPlayground a Repo for discovering all things Phoenix
+
+## Features
+- Feature 1
+- Feature 2
+- Feature 3
 
 To start your Phoenix server:
 
