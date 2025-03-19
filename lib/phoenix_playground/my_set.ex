@@ -4,7 +4,7 @@ defmodule PhoenixPlayground.MySet do
 
   #  if you require to update an undefined key in a struct, the Map module functions, put/3, update/4 etc can be used.
 
-  def push(set = %{items: items}, item) do
+  def push(%{items: items} = set, item) do
     if Enum.member?(items, item) do
       set
     else

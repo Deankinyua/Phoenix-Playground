@@ -1,4 +1,7 @@
 defmodule PhoenixPlaygroundWeb.NumberCompare do
+  @moduledoc """
+  shows how numbers compare
+  """
   use PhoenixPlaygroundWeb, :controller
 
   def greater(number, other_number) when number >= other_number, do: number
@@ -24,10 +27,10 @@ defmodule PhoenixPlaygroundWeb.NumberCompare do
   end
 
   def integer_checker(value) do
-    unless is_integer(value) do
-      "Not an Integer"
-    else
+    if is_integer(value) do
       "An Integer"
+    else
+      "Not an Integer"
     end
   end
 

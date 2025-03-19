@@ -1,5 +1,8 @@
 defmodule PhoenixPlayground.MergeSort do
-  # Entry point
+  @moduledoc """
+  Mergesort
+  """
+
   def merge_sort([]), do: []
   def merge_sort([a]), do: [a]
 

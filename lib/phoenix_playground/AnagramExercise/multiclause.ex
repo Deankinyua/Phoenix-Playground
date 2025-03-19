@@ -1,4 +1,7 @@
 defmodule PhoenixPlayground.Multiclause do
+  @moduledoc """
+  Module for learning about multiclause functions
+  """
   # note: Multiclause Functions
   def fact(0), do: 1
   def fact(n), do: n * fact(n - 1)
@@ -15,8 +18,8 @@ defmodule PhoenixPlayground.Multiclause do
     IO.puts("we can only calculate positive numbers")
   end
 
-  def is_list_empty?([]), do: true
-  def is_list_empty?([_ | _]), do: false
+  def list_empty([]), do: true
+  def list_empty([_ | _]), do: false
 
   # * This is an Overloaded multiclause function which uses
   # * pattern matching to find the area of different shapes

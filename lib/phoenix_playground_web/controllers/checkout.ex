@@ -1,4 +1,7 @@
 defmodule PhoenixPlaygroundWeb.Checkout do
+  @moduledoc """
+  Checkout Controller
+  """
   use PhoenixPlaygroundWeb, :controller
 
   def total_cost(price, tax_rate) do
