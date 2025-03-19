@@ -2,8 +2,8 @@ import Config
 
 # Configure your database
 config :phoenix_playground, PhoenixPlayground.Repo,
-  username: "dean",
-  password: "kamanu254",
+  username: "postgres",
+  password: "postgres",
   hostname: "localhost",
   database: "phoenix_playground_dev",
   stacktrace: true,
